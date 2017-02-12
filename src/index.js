@@ -1,5 +1,7 @@
-const test  = () => console.log('ok');
+const Dialog = require('dialogLayer/dialog');
 
-module.exports ={
+const test  = () => console.log(Dialog);
+
+module.exports = {
     test
 }

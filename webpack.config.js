@@ -4,12 +4,21 @@ const webpack = require('webpack');
 const ProgressBarPlugin =require('progress-bar-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+//自动引入静态资源到html 页面
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 process.env.NODE_ENV = 'development' || 'production';
 
 let plugins = [
     new ProgressBarPlugin({ format: ' webpack 构建中 [:bar] :percent :msg' }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'common' }),
+
+    new HtmlWebpackPlugin({
+        filename: 'index.html',
+        chunks: ['index'],
+        template: __dirname + '/src/index.html'
+    })
 ]
 
 if (process.env.NODE_ENV != 'production') {
@@ -29,6 +38,18 @@ const config ={
     output: {
         path: './dist',
         filename: '[name].js',
+    },
+    resolve: {
+        alias: {
+
+        },
+        modulesDirectories: [
+            '',
+            'node_modules',
+            'src/components',
+            'components'
+        ],
+        extensions: ['', '.js', '.jsx', '.jsx.js', '.css']
     },
     module: {
         loaders: [
@@ -75,8 +96,11 @@ const config ={
             },
             {
                 test: /\.js$/,
-                loader: 'bable',
+                loader: 'babel',
                 exclude: /node_modules|control/,
+                query: {
+                    presets: ['es2015']
+                }
             }
 
         ]
