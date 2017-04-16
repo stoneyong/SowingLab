@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const ProgressBarPlugin =require('progress-bar-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 //自动引入静态资源到html 页面
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -14,6 +16,12 @@ let plugins = [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'common' }),
 
+    new CleanWebpackPlugin(['dist'], {
+      root: '', // An absolute path for the root  of webpack.config.js
+      verbose: true,// Write logs to console.
+      dry: false // Do not delete anything, good for testing.
+    }),
+    
     new HtmlWebpackPlugin({
         filename: 'index.html',
         chunks: ['index'],
