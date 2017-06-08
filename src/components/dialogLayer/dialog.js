@@ -4,7 +4,7 @@ class dialog {
 
     }
 
-    start(){
+    start () {
         console.log(dialog);
     }
 }
