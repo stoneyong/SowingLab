@@ -1,7 +1,10 @@
 var path = require('path')
+const webpack = require('webpack');
 // var utils = require('./utils')
-// var config = require('../config')
+var config = require('../config');
 // var vueLoaderConfig = require('./vue-loader.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -9,11 +12,11 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js',
-    vendors: './src/vendors/index.js'
+    app: resolve('./src/main.js'),
+    vendors: resolve('./src/vendors/index.js')
   },
   output: {
-    path: 'dist',
+    path: resolve('dist'),
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
@@ -26,7 +29,7 @@ module.exports = {
       resolve('node_modules')
     ],
     alias: {
-      'vue$': 'vue/dist/vue.common.js',
+      'react$': 'vue/dist/vue.common.js',
       'src': resolve('src'),
       'assets': resolve('src/assets'),
       'components': resolve('src/components')
@@ -52,19 +55,46 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
-        query: {
+        options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: 'img/[name].[hash:7].[ext]'
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        query: {
+        options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: 'fonts/[name].[hash:7].[ext]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
-  }
+  },
+  plugins:[
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor-[hash].min.js',
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false,
+      }
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new ExtractTextPlugin({
+    filename: 'build.min.css',
+    allChunks: true,
+  }),
+  ],
+  devtool: "source-map", 
+
 }
