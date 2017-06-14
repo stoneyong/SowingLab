@@ -409,8 +409,8 @@
     ```
 3. 除现有某些接口外，后端应该返回未编码过的数据，由前端进行编码。前端应该假设后端返回的数据都是不安全的
 
-### jQuery/cQuery
-1. jQuery/cQuery 对象的变量名应该使用 $ 开头
+### jQuery
+1. jQuery 对象的变量名应该使用 $ 开头
 2. 应该缓存 jQuery 选择结果，或使用链式调用避免不必要的元素查询
     ```js
     //bad
@@ -649,36 +649,7 @@
 ### 参考
 * [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 
-### 文件结构和模块化(待定，仅说明，非强制规范)
-#### 文件结构
 
-* EnglishSite `EnglishSite`
-    + CSS `css资源文件`
-    + dist `生成结果，不放入 git 仓库中`
-    + Grunt `构建、打包文件`
-    + JS `模块的资源`
-      * flight_v3 `机票模块`
-        + book
-        + changeorder
-        + common
-        + i18n
-        + index
-        + list
-        + plugin
-        + public
-          - dialog
-          - doT 
-          - tooltip `title plugin`
-          - util.js `公用的工具性方法`
-        + schedule
-        + searchbox 
-        + template
-        + vieworder
-        + global.js `全局对象、方法`
-        + gruntCfg.json `grunt config`
-        + main.js `requireJS 入口文件`
-        + text.js ``
-         
 #### 模块组织
 * 使用 npm 管理外部库依赖，不应该将外部库直接放入项目中
 * 组件应该模块化，应该使用 commonjs 或 amd/cmd 格式。amd/cmd 模块的 define 头的参数应该只有一个 factory 方法 
