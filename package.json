@@ -31,7 +31,7 @@
     "html-webpack-plugin": "^2.17.0",
     "open-browser-webpack-plugin": "0.0.2",
     "postcss-loader": "^0.9.1",
-    "progress-bar-webpack-plugin": "^1.9.2",
+    "progress-bar-webpack-plugin": "^1.9.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.3.1",
