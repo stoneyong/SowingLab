@@ -4,7 +4,7 @@ const webpack = require('webpack');
 var config = require('../config');
 // var vueLoaderConfig = require('./vue-loader.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -16,8 +16,8 @@ module.exports = {
     vendors: resolve('./src/vendors/index.js')
   },
   output: {
-    path: resolve('dist'),
-    filename: '[name].js',
+    path: resolve('./dist'),
+    filename: '[name].dev.js',
     // publicPath: process.env.NODE_ENV === 'production'
     //   ? config.build.assetsPublicPath
     //   : config.dev.assetsPublicPath
@@ -79,6 +79,10 @@ module.exports = {
     ]
   },
   plugins:[
+    new CleanWebpackPlugin(resolve('dist/*'),{
+      root: resolve('/'),
+      verbose: true
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor-[hash].min.js',

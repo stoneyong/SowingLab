@@ -6,7 +6,6 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 
 const config = Object.assign({}, baseConfig, {
-  debug: true,
   cache: true,
   watch: true,
   profile: true,
@@ -16,3 +15,4 @@ const config = Object.assign({}, baseConfig, {
   ]),
 
 });
+module.exports = config;
