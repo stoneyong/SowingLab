@@ -1,0 +1,76 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "esnext": true,
+  "extends": [
+    "airbnb/legacy"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "amd": true,
+    "worker": true,
+    "jquery": true,
+    "es6": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config-index": 1
+      }
+    }
+  },
+  "globals": {
+    "Windows": false,
+    "Zepto": false,
+    "CurrentDate": false,
+    "VirtualPath": false,
+    "delCookie": false,
+    "getCookie": false,
+    "setCookie": false,
+    "_": false,
+    "grunt": false,
+    "React": false,
+    "__webpack_public_path__": false
+  },
+  "rules": {
+    "new-cap": [1, { "capIsNewExceptions": [
+      "Immutable",
+      "Immutable.List",
+      "Immutable.Set",
+      "Immutable.Map",
+      "Immutable.OrderedMap",
+      "$.Deferred",
+      "ActiveXObject",
+      "GetThumbHtml"
+    ] }],
+    "camelcase": 1,
+    "max-len": [1, 120],
+    "strict": 0,
+    "consistent-return": 0,
+    "quote-props": 0,
+    "no-underscore-dangle": 0,
+    "func-names": 0,
+    "quotes": [1, "single", "avoid-escape"],
+    "comma-dangle": [2, "always-multiline"],
+    "no-param-reassign": [0, { "props": false }],
+    "no-use-before-define": [2, { "functions": false, "classes": true }],
+    "no-unused-vars": [1, { "vars": "all", "args": "none" }],
+    "one-var-declaration-per-line": [1, "initializations"],
+    "one-var": [2, { "initialized": "never" }],
+    "no-empty": [2, { "allowEmptyCatch": true }],
+    "no-native-reassign": [1, { "exceptions": [ "__webpack_public_path__" ]}],
+    "global-require": 0,
+    "dot-notation": 1,
+    "vars-on-top": 1,
+    "eqeqeq": 1,
+    "no-alert": 0,
+    "prefer-template": 0,
+    "import/no-unresolved": 1,
+    "react/prefer-es6-class": 0
+  }
+}
