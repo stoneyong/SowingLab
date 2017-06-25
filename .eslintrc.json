@@ -1,10 +1,10 @@
 {
   "root": true,
   "parser": "babel-eslint",
-  "esnext": true,
-  "extends": [
-    "airbnb/legacy"
-  ],
+  "extends":  "eslint:recommended",
+  // [
+  //   "airbnb/legacy"
+  // ],
   "plugins": [
     "react"
   ],
