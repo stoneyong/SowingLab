@@ -1,3 +1,5 @@
-module.exports = () => {
-    console.log('this is main');
+import React from 'React';
+
+function main () {
+    console.log('realy');
 }
