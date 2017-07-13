@@ -20,7 +20,10 @@ const config = Object.assign({}, baseConfig, {
   devServer: {
     contentBase: resolve('dist'),
     publicPath: '/',
-    hot: true
+    hot: true,
+    inline: true,
+    port: 10001,
+    host:'localhost',
   }
 });
 module.exports = config;
