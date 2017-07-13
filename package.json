@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "dev": "webpack --config build/webpack.devlopment.config.js --watch --display-modules --profile --progress --colors --display-error-details",
-    "dev-hrm": "webpack-dev-server"
+    "dev-hrm": "npm run build/devServer.js"
   },
   "repository": {
     "type": "git",
