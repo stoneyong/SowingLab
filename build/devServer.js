@@ -7,10 +7,10 @@ const devServer = require('webpack-dev-server');
 const configDev = require('./webpack.devlopment.config');
 
 const compiler = webpack(configDev);
-
+console.log('path==', __dirname);
 const server = new devServer(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    contentBase: path.client(),
+    publicPath: configDev.output.publicPath,
+    contentBase: path.join(__dirname, '../dist'),
     hot: true,
     quiet: false,
     noInfo: false,

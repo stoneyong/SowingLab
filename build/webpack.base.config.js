@@ -18,9 +18,9 @@ module.exports = {
   output: {
     path: resolve('./dist'),
     filename: '[name].dev.js',
-    // publicPath: process.env.NODE_ENV === 'production'
-    //   ? config.build.assetsPublicPath
-    //   : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
