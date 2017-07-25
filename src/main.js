@@ -1,5 +1,5 @@
-// import React from 'React';
+import React from 'React';
 
 function main () {
-    console.log('realy');
+    // console.log(React);
 }
