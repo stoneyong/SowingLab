@@ -79,7 +79,7 @@ module.exports = {
     ]
   },
   plugins:[
-    new CleanWebpackPlugin(resolve('dist/*'),{
+    new CleanWebpackPlugin(resolve('dist/*'), {
       root: resolve('/'),
       verbose: true
     }),

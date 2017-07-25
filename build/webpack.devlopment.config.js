@@ -8,7 +8,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
+console.log(baseConfig.output.path, baseConfig.output.publicPath);
 const config = Object.assign({}, baseConfig, {
   cache: true,
   watch: true,
