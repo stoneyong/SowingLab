@@ -11,7 +11,7 @@ const compiler = webpack(configDev);
 console.log('path==', configDev);
 const server = new devServer(compiler, {
     publicPath: configDev.output.publicPath,
-    contentBase: path.join(__dirname, '../dist'),
+    // contentBase: path.join(__dirname, '../dist'),
     hot: true,
     quiet: false,
     noInfo: false,
