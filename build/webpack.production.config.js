@@ -7,7 +7,7 @@ const proConfig = object.assgin({}, baseConfig, {
       compress: {
         warnings: false,
         drop_console: false,
-      }
+      },
     }),
-  ])
-})
+  ]),
+});

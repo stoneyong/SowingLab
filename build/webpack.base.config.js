@@ -1,4 +1,4 @@
-var path = require('path')
+var path = require('path');
 const webpack = require('webpack');
 // var utils = require('./utils')
 var config = require('../config');
@@ -6,86 +6,80 @@ var config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
   entry: {
     app: [resolve('./src/main.js')],
-    vendors: resolve('./src/vendors/index.js')
+    vendors: resolve('./src/vendors/index.js'),
+  },
+  devServer: {
+    contentBase: './dist'
   },
   output: {
     path: resolve('./dist'),
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-    modules: [
-      resolve('src'),
-      resolve('node_modules')
-    ],
+    modules: [resolve('src'), resolve('node_modules')],
     alias: {
-      'react$': 'vue/dist/react.common.js',
-      'src': resolve('src'),
-      'assets': resolve('src/assets'),
-      'components': resolve('src/components')
-    }
+      react$: 'vue/dist/react.common.js',
+      src: resolve('src'),
+      assets: resolve('src/assets'),
+      components: resolve('src/components'),
+    },
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint-loader',
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         include: [resolve('src'), resolve('test')],
         options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+          formatter: require('eslint-friendly-formatter'),
+        },
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'img/[name].[hash:7].[ext]'
-        }
+          name: 'img/[name].[hash:7].[ext]',
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'fonts/[name].[hash:7].[ext]'
-        }
+          name: 'fonts/[name].[hash:7].[ext]',
+        },
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.html$/,
-        use: ['html-loader']
-      }
-    ]
+        use: ['html-loader'],
+      },
+    ],
   },
-  plugins:[
+  plugins: [
     new CleanWebpackPlugin(resolve('dist/*'), {
       root: resolve('/'),
-      verbose: true
+      verbose: true,
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -99,8 +93,8 @@ module.exports = {
     new HtmlwebpackPlugin({
       title: 'My App',
       filename: 'index.html',
-      template: resolve('/index.html')
-    })
+      template: resolve('/index.html'),
+    }),
   ],
-  devtool: "source-map", 
-}
+  devtool: 'source-map',
+};
