@@ -6,6 +6,7 @@ const path = require('path');
 const devServer = require('webpack-dev-server');
 const configDev = require('./webpack.devlopment.config');
 
+configDev.entry.app.unshift('webpack-dev-server/client?http://localhost:10001/');
 const compiler = webpack(configDev);
 console.log('path==', configDev);
 const server = new devServer(compiler, {

@@ -5,19 +5,19 @@ var config = require('../config');
 // var vueLoaderConfig = require('./vue-loader.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const HtmlwebpackPlugin = require('html-webpack-plugin');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   entry: {
-    app: resolve('./src/main.js'),
+    app: [resolve('./src/main.js')],
     vendors: resolve('./src/vendors/index.js')
   },
   output: {
     path: resolve('./dist'),
-    filename: '[name].dev.js',
+    filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -75,6 +75,10 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader']
       }
     ]
   },
@@ -89,9 +93,14 @@ module.exports = {
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ExtractTextPlugin({
-    filename: 'build.min.css',
-    allChunks: true,
-  }),
+      filename: 'build.min.css',
+      allChunks: true,
+    }),
+    new HtmlwebpackPlugin({
+      title: 'My App',
+      filename: 'index.html',
+      template: resolve('/index.html')
+    })
   ],
   devtool: "source-map", 
 }

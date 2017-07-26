@@ -3,7 +3,7 @@ const config = {
     assetsPublicPath: ''
   },
   dev: {
-    assetsPublicPath: '/dist'
+    assetsPublicPath: './dist'
   }
 }
 module.exports = config;
