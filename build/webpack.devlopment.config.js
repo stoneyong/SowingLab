@@ -1,12 +1,11 @@
-'use strict'
+'use strict';
 const webpack = require('webpack');
 const path = require('path');
 const baseConfig = require('./webpack.base.config');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
-
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
 }
 console.log(baseConfig.output.path, baseConfig.output.publicPath);
 const config = Object.assign({}, baseConfig, {

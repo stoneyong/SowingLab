@@ -1,9 +1,9 @@
 const config = {
   build: {
-    assetsPublicPath: ''
+    assetsPublicPath: '',
   },
   dev: {
-    assetsPublicPath: './dist'
-  }
-}
+    assetsPublicPath: '/dist/',
+  },
+};
 module.exports = config;
