@@ -51,8 +51,8 @@
       // 一些代码
     })();
     
-    var x = { 'i': 1, 'j': 2 }
-    [normalVersion, ffVersion][isIE]();
+    <!-- var x = { 'i': 1, 'j': 2 }
+    [normalVersion, ffVersion][isIE](); -->
     
     var THINGS_TO_EAT = [apples, oysters, sprayOnCheese]
     -1 == resultOfOperation() || die();
