@@ -8,7 +8,7 @@ const configDev = require('./webpack.devlopment.config');
 
 configDev.entry.app.unshift('webpack-dev-server/client?http://localhost:10001/');
 const compiler = webpack(configDev);
-console.log('path==', configDev);
+
 const server = new devServer(compiler, {
     publicPath: configDev.output.publicPath,
     contentBase: path.join(__dirname, '../dist'),
