@@ -2,7 +2,6 @@ import React from 'React';
 
 function main () {
     // console.log(React);
-<<<<<<< HEAD
     var cId = '5';
     var data = [
         {
@@ -245,11 +244,9 @@ function main () {
             })
         }
     }
-=======
 
     //深度遍历
 
     //广度遍历
     
->>>>>>> aa3143883513ddc033b79552953cb82304f5a8df
 }
