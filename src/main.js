@@ -237,7 +237,7 @@ function main () {
         let itemObj = filterData.length && filterData[0];
 
         if (typeof itemObj === 'object') {
-
+            return 1;
         } else {
             data.forEach((item) => {
                 filterData(item.son, )
