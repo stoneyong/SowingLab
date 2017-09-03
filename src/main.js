@@ -1,7 +1,8 @@
 import React from 'React';
+import { Router, Route, Link } from 'react-router';
 
 function main () {
-    // console.log(React);
+    console.log(React, Router);
     var cId = '5';
     var data = [
         {
