@@ -2,9 +2,6 @@
   "root": true,
   "parser": "babel-eslint",
   "extends":  "eslint:recommended",
-  // [
-  //   "airbnb/legacy"
-  // ],
   "plugins": [
     "react"
   ],
@@ -77,7 +74,6 @@
     "eqeqeq": 1,
     "no-alert": 0,
     "prefer-template": 0,
-    "import/no-unresolved": 1,
     "react/prefer-es6-class": 0
   }
 }
