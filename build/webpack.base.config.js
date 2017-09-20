@@ -27,7 +27,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [resolve('src'), resolve('node_modules')],
     alias: {
-      react$: 'vue/dist/react.common.js',
+      // react$: 'vue/dist/react.common.js',
       src: resolve('src'),
       assets: resolve('src/assets'),
       components: resolve('src/components'),
