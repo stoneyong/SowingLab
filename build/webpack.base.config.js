@@ -12,7 +12,7 @@ function resolve(dir) {
 
 module.exports = {
   entry: {
-    app: [resolve('./src/main.js')],
+    app: [resolve('./src/index.js')],
     vendors: resolve('./src/vendors/index.js'),
   },
   devServer: {
@@ -46,9 +46,14 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')],
+        exclude: /node_modules/,
+        query: {
+          cacheDirectory: true,
+          presets: ['react', 'es2015']
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

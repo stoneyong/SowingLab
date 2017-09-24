@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Link } from 'react-router';
 
 function main () {
-    console.log(React, Router);
+    console.log(React, Router, Route, Link);
     var cId = '5';
     
 
