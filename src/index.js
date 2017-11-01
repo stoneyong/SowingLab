@@ -48,4 +48,4 @@ React.render((
       </Route>
     </Route>
   </Router>
-), document.body)
+), document.body);
