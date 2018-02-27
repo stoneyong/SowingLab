@@ -50,7 +50,7 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')],
         exclude: /node_modules/,
-        query: {
+        options: {
           cacheDirectory: true,
           presets: ['react', 'es2015'],
           plugins: ["transform-runtime"]

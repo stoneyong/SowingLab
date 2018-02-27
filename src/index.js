@@ -38,7 +38,7 @@ const Message = React.createClass({
     return <h3>Message {this.props.params.id}</h3>
   }
 })
-
+console.log('test');
 React.render((
   <Router>
     <Route path="/" component={App}>
