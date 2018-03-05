@@ -6,6 +6,12 @@ const path = require('path');
 const devServer = require('webpack-dev-server');
 const configDev = require('./webpack.devlopment.config');
 
+// 添加 HRM 相关的 plugins
+configDev.plugins.push(...[
+  new webpack.NamedModulesPlugin(),
+  new webpack.HotModuleReplacementPlugin()
+]);
+
 const options = {
   publicPath: configDev.output.publicPath,
   contentBase: path.join(__dirname, 'dist/'),
@@ -17,7 +23,9 @@ const options = {
     chunks: false,
     chunkModules: false,
     colors: true,
-  }
+  },
+  host: 'localhost',
+  port: '10001'
 }
 
 devServer.addDevServerEntrypoints(configDev, options);

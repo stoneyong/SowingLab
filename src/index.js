@@ -10,7 +10,7 @@ const App = React.createClass({
           <li><Link to="/about">About</Link></li>
           <li><Link to="/inbox">Inbox</Link></li>
         </ul>
-        {this.props.children || 'apppp'}
+        {this.props.children || 'apppppp'}
       </div>
     )
   }
@@ -38,7 +38,6 @@ const Message = React.createClass({
     return <h3>Message {this.props.params.id}</h3>
   }
 })
-console.log('test');
 React.render((
   <Router>
     <Route path="/" component={App}>
@@ -49,3 +48,7 @@ React.render((
     </Route>
   </Router>
 ), document.body);
+
+if (module.hot) {
+  module.hot.accept();
+}

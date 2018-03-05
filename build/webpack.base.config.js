@@ -15,9 +15,9 @@ module.exports = {
     app: [resolve('./src/index.js')],
     vendors: resolve('./src/vendors/index.js'),
   },
-  devServer: {
-    contentBase: './dist'
-  },
+  // devServer: {
+  //   contentBase: './dist'
+  // },
   output: {
     path: resolve('./dist'),
     filename: '[name].js',
