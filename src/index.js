@@ -1,5 +1,6 @@
-import React from 'react'
-import { Router, Route, Link } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Link } from 'react-router-dom';
 
 const App = React.createClass({
   render() {
@@ -38,7 +39,7 @@ const Message = React.createClass({
     return <h3>Message {this.props.params.id}</h3>
   }
 })
-React.render((
+ReactDOM.render((
   <Router>
     <Route path="/" component={App}>
       <Route path="about" component={About} />

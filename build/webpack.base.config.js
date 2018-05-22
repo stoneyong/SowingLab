@@ -51,7 +51,9 @@ module.exports = {
         include: [resolve('src'), resolve('test')],
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
+          cacheDirectory: true,
+          presets: ['react', 'es2015'],
+          plugins: ['transform-runtime']
         }
       },
       {
