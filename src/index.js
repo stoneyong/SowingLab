@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const App = React.createClass({
   render() {
@@ -48,7 +48,7 @@ ReactDOM.render((
       </Route>
     </Route>
   </Router>
-), document.body);
+), document.getElementById('reactContainer'));
 
 if (module.hot) {
   module.hot.accept();
