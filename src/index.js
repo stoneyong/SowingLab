@@ -2,51 +2,85 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const App = React.createClass({
-  render() {
-    return (
-      <div>
-        <h1>App</h1>
-        <ul>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/inbox">Inbox</Link></li>
-        </ul>
-        {this.props.children || 'apppp'}
-      </div>
-    )
-  }
-})
 
-const About = React.createClass({
-  render() {
-    return <h3>About</h3>
-  }
-})
+// Some folks find value in a centralized route config.
+// A route config is just data. React is great at mapping
+// data into components, and <Route> is a component.
 
-const Inbox = React.createClass({
-  render() {
-    return (
-      <div>
-        <h2>Inbox</h2>
-        {this.props.children || "Welcome to your Inbox"}
-      </div>
-    )
-  }
-})
+////////////////////////////////////////////////////////////
+// first our route components
+const Main = () => <h2>Main</h2>;
 
-const Message = React.createClass({
-  render() {
-    return <h3>Message {this.props.params.id}</h3>
+const Sandwiches = () => <h2>Sandwiches</h2>;
+
+const Tacos = ({ routes }) => (
+  <div>
+    <h2>Tacos</h2>
+    <ul>
+      <li>
+        <Link to="/tacos/bus">Bus</Link>
+      </li>
+      <li>
+        <Link to="/tacos/cart">Cart</Link>
+      </li>
+    </ul>
+
+    {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+  </div>
+);
+
+const Bus = () => <h3>Bus</h3>;
+const Cart = () => <h3>Cart</h3>;
+
+////////////////////////////////////////////////////////////
+// then our route config
+const routes = [
+  {
+    path: "/sandwiches",
+    component: Sandwiches
+  },
+  {
+    path: "/tacos",
+    component: Tacos,
+    routes: [
+      {
+        path: "/tacos/bus",
+        component: Bus
+      },
+      {
+        path: "/tacos/cart",
+        component: Cart
+      }
+    ]
   }
-})
+];
+
+// wrap <Route> and use this everywhere instead, then when
+// sub routes are added to any route it'll work
+const RouteWithSubRoutes = route => (
+  <Route
+    path={route.path}
+    render={props => (
+      // pass the sub-routes down to keep nesting
+      <route.component {...props} routes={route.routes} />
+    )}
+  />
+);
+
 ReactDOM.render((
   <Router>
-    <Route path="/" component={App}>
-      <Route path="about" component={About} />
-      <Route path="inbox" component={Inbox}>
-        <Route path="messages/:id" component={Message} />
-      </Route>
-    </Route>
+    <div>
+      <ul>
+        <li>
+          <Link to="/tacos">Tacos</Link>
+        </li>
+        <li>
+          <Link to="/sandwiches">Sandwiches</Link>
+        </li>
+      </ul>
+
+      {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+    </div>
   </Router>
 ), document.getElementById('reactContainer'));
 
